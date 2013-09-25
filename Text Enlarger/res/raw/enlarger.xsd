@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/enlarger"
+	xmlns:tns="http://www.example.org/enlarger" elementFormDefault="qualified">
+	<element name="enlarger" type="tns:enlarger"></element>
+	<complexType name="enlarger">
+		<sequence>
+			<element name="rules" type="tns:rules">
+			</element>
+			<element name="lexicalunits" type="tns:lexicalunits">
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="rules">
+		<sequence>
+			<element maxOccurs="unbounded" name="rule-description" type="tns:rule-description">
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="lexicalunits">
+		<sequence>
+			<element name="lexicalunit" maxOccurs="unbounded" type="tns:lexicalunit">
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="rule-description">
+		<all>
+			<element name="regexp" type="string"></element>
+			<element name="outcomeletter" type="string"></element>
+			<element name="allowedlength" type="int"></element>
+			<element name="priority" type="int" minOccurs="0"></element>
+			<element name="rule-name" type="string"></element>
+			<element name="throwaway" type="string"></element>
+		</all>
+	</complexType>
+	<complexType name="lexicalunit">
+		<sequence>
+			<element name="prefix" type="string" maxOccurs="unbounded"></element>
+			<element name="rule-name" type="string"></element>
+			<element name="chance" type="integer" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enlarger xmlns="http://www.example.org/enlarger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/enlarger enlarger.xsd ">
+  <rules>
+    <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[оеёэОЕЁЭ].*</regexp>
+      <outcomeletter>е</outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>xyi1</rule-name>
+      <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[оеёэОЕЁЭ]{1}</throwaway>
+    </rule-description>
+     <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[уюУЮ].*</regexp>
+      <outcomeletter>ю</outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>xyi2</rule-name>
+      <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[уюУЮ]{1}</throwaway>
+    </rule-description>
+     <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[аяАЯ].*</regexp>
+      <outcomeletter>я</outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>xyi3</rule-name>
+      <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[аяАЯ]{1}</throwaway>
+    </rule-description>
+     <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[иыИЫ].*</regexp>
+      <outcomeletter>и</outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>xyi4</rule-name>
+      <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[иыИЫ]{1}</throwaway>
+    </rule-description>
+  </rules>
+  <lexicalunits>
+    <lexicalunit>
+      <prefix>ху</prefix>
+      <rule-name>xyi1</rule-name>
+      <rule-name>xyi2</rule-name>
+      <rule-name>xyi3</rule-name>
+      <rule-name>xyi4</rule-name>
+    </lexicalunit>
+  </lexicalunits>
+</enlarger>
