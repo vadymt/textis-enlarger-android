@@ -12,15 +12,21 @@ import vlt.text.textimprover.TextImprover;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.text.ClipboardManager;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
-    TextImprover textImprover;
+    private TextImprover textImprover;
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +47,42 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//	 Inflate the menu; this adds items to the action bar if it is present.
+    public boolean onCreateOptionsMenu(Menu menu) {	
+	// Inflate the menu; this adds items to the action bar if it is present.
 	getMenuInflater().inflate(R.menu.main, menu);
+	MenuItem shareItem = menu.findItem(R.id.share);
+	mShareActionProvider = (ShareActionProvider) MenuItemCompat
+		.getActionProvider(shareItem);
+	// Set history different from the default before getting the action
+	// view since a call to MenuItemCompat.getActionView() calls
+	// onCreateActionView() which uses the backing file name. Omit this
+	// line if using the default share history file is desired.
+	shareItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+	    
+	    @Override
+	    public boolean onMenuItemClick(MenuItem item) {
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		sendIntent.putExtra(Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.editText)).getText());
+		sendIntent.setType("text/plain");
+		startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share)));
+		return false;
+	    }
+	});
+	
 	return true;
     }
 
-    private void init() throws IOException, ParserConfigurationException, SAXException {
-	textImprover = new TextImprover(getResources().openRawResource(R.raw.enlargerprefs));
+    private void init() throws IOException, ParserConfigurationException,
+	    SAXException {
+
+	textImprover = new TextImprover(getResources().openRawResource(
+		R.raw.enlargerprefs));
 	Button buttonEnlarge = (Button) findViewById(R.id.buttonEnlarge);
 	buttonEnlarge.setOnClickListener(new View.OnClickListener() {
-	    
+
 	    @Override
-	    public void onClick(View v) {		
+	    public void onClick(View v) {
 		EditText editTextOriginal = (EditText) findViewById(R.id.editText);
 		String textEnlarged = editTextOriginal.getText().toString();
 		String textImproved = textImprover.improveText(textEnlarged);
@@ -62,13 +91,14 @@ public class MainActivity extends Activity {
 	});
 	Button buttonCopy = (Button) findViewById(R.id.buttonCopy);
 	buttonCopy.setOnClickListener(new View.OnClickListener() {
-	    
+
 	    @Override
 	    public void onClick(View v) {
 		EditText editTextOriginal = (EditText) findViewById(R.id.editText);
 		ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-		clipboard.setText(editTextOriginal.getText());		
+		clipboard.setText(editTextOriginal.getText());
 	    }
 	});
     }
+    
 }
