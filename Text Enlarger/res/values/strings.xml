@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Увеличитель текста</string>
+    <string name="app_name">Увеличитель текстиса</string>
     <string name="action_settings">Настройки</string>
     <string name="run_button">Увеличить</string>
     <string name="copy_to_clipboard">Копировать</string>

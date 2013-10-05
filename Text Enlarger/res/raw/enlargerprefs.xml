@@ -29,6 +29,27 @@
       <rule-name>xyi4</rule-name>
       <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[иыИЫ]{1}</throwaway>
     </rule-description>
+     <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[ьъЬЪ].*</regexp>
+      <outcomeletter></outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>xyi5</rule-name>
+      <throwaway>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[ьъЬЪ]{1}</throwaway>
+    </rule-description>
+    <rule-description>
+      <regexp>[оеёэОЕЁЭ].*</regexp>
+      <outcomeletter></outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>govno1</rule-name>
+      <throwaway></throwaway>
+    </rule-description>
+       <rule-description>
+      <regexp>[бвгджзклмнпрстфхчцшщБВГДЖЗКЛМНПРСТФХЧЦШЩ]*[ьъуеыаояиюЬЪУЕЫАОЯИЮ].*</regexp>
+      <outcomeletter>о</outcomeletter>
+      <allowedlength>3</allowedlength>
+      <rule-name>govno2</rule-name>
+      <throwaway></throwaway>
+    </rule-description>
   </rules>
   <lexicalunits>
     <lexicalunit>
@@ -37,6 +58,12 @@
       <rule-name>xyi2</rule-name>
       <rule-name>xyi3</rule-name>
       <rule-name>xyi4</rule-name>
+      <rule-name>xyi5</rule-name>
+    </lexicalunit>
+     <lexicalunit>
+      <prefix>говн</prefix>
+      <rule-name>govno1</rule-name>
+      <rule-name>govno2</rule-name>
     </lexicalunit>
   </lexicalunits>
 </enlarger>

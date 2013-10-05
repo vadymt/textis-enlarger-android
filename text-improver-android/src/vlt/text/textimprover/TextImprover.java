@@ -22,6 +22,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class TextImprover {
     private final String REGEXP_WORD = "[Р-пр-џ0-9]+";
     private List<LexicalUnit> lexicalUnitList;
+    @SuppressWarnings("unused")
     private Map<String, Rule> ruleMap;
 
     public TextImprover(String configText) throws ParserConfigurationException,

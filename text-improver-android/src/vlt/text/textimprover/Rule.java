@@ -23,7 +23,8 @@ public class Rule {
     private String name;
 
     public Rule() {
-
+	setOutcomeLetter("");
+	setThrowAwayRegex("");
     }
 
     public Rule(String regexp, String outcomeLetter, int allowedLength,
